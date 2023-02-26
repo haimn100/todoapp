@@ -1,0 +1,113 @@
+.container{
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.container ul{
+    list-style: none;
+    padding: 5px 0;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container form{
+    display: flex;
+}
+
+
+
+.container form button{
+    width: 50px;
+    border: 1px solid white;
+    background-color: aquamarine;
+    font-size: 2em;
+}
+
+.inputTask{
+    border: 2px solid #dfdfdf;
+    border-radius: 40px;
+    height: 40px;
+    padding: 0 11px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: #888;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+.container ul li{
+    display: flex;
+    background-color: orange;
+    margin: 3px 0;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid navajowhite;
+    align-items: center;
+    animation: fadeIn 1s;
+    border: 2px dotted white;
+}
+
+.container ul li label,.container ul li label input{
+    text-align: left;
+    flex-grow: 1;
+    font-size: 1.2em;
+}
+
+.actions > i{
+    margin-left: 5px;
+    font-size: 1.2em;
+    color:  blue;
+}
+
+.actions > i:hover{
+    color: yellow;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.edittask .checkBtn{
+    display: none;
+}
+
+
+.task-completed label {
+
+    position: relative;
+}
+
+.container li label {
+    position: relative;
+}
+
+.task-completed label::before{
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 0;
+    top:50%;
+    width: 100%;
+    background-color: black;
+
+}
+
+.task-completed .editBtn {
+    display: none;
+}
+
+/* .task-completed .actions .checkbtn{
+    color: yellow;
+
+} */
+
+@keyframes fadeIn {
+    0% {  
+        opacity: 0;
+        transform: rotateX(-90deg);
+        transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76);}
+    100% {   opacity: 1;
+        transform: none;
+        transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76);}
+  }
