@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Todo } from '../store';
+import { todoApi, Todo } from '../store'
 import styles from './TodoList.module.css';
 import { AiOutlineEdit, AiOutlineCheck, AiOutlineDelete, AiOutlineCheckCircle, AiFillCheckCircle } from 'react-icons/ai';
 
@@ -11,14 +11,21 @@ interface Props {
 
 const TodoItem = ({ todo, isValidTask }: Props) => {
 
+    const [updateTodo] = todoApi.useUpdateTodoMutation();
+    const [deleteTodo] = todoApi.useDeleteTodoMutation();
+
     const [inEditMode, setInEditMode] = useState(false);
+
     const editInputRef = useRef<HTMLInputElement>(null);
 
-    const del = (id: number) => { }
+    const del = (id: number) => deleteTodo(id)
 
-    const toggle = (todo: Todo) => { };
+    const toggle = (todo: Todo) => updateTodo({ ...todo, completed: !todo.completed });
 
     const update = async (todo: Todo) => {
+        const newTask = editInputRef.current?.value || "";
+        if (isValidTask(newTask)) await updateTodo({ ...todo, task: newTask });
+        setInEditMode(false);
     }
 
     return (
